@@ -1,0 +1,78 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/mixins';
+@import '~colby-bootstrap/variables';
+
+.Updates {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  position: relative;
+  padding: .75rem 0 1.5rem;
+  background: rgba($white, .92);
+  align-self: flex-end;
+  width: 100%;
+  min-height: 120px;
+  @include make-col(12);
+
+  .innerUpdates {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    @media screen and (min-width: map-get($grid-breakpoints, 'lg')) {
+      flex-direction: row;
+    }
+  }
+
+  .badgeContainer {
+    width: 100%;
+    text-transform: uppercase;
+    padding: 0 0 .75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    span {
+      background-color: $blue;
+      color: $white;
+
+      @supports (background-color: var(--accent)) {
+        background-color: var(--accent);
+        color: var(--accent-text);
+      }
+    }
+  }
+
+  h2 {
+    padding: 0 1.5rem;
+  }
+
+  .update {
+    margin-bottom: .75rem;
+    padding: 0 1.5rem;
+    width: 100%;
+    line-height: 1.26;
+    a {
+      font-weight: normal;
+    }
+
+    @media screen and (min-width: map-get($grid-breakpoints, 'lg')) {
+      width: 33.3333333%;
+    }
+  }
+
+  .updateDate {
+    padding-top: .25rem;
+    text-transform: uppercase;
+    font-size: .841rem;
+  }
+}
+
+.moreLink {
+  text-transform: uppercase;
+  font-size: .891rem;
+  padding: 0 1.5rem .75rem;
+  margin-left: auto;
+}
