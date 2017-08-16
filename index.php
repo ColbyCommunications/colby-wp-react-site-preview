@@ -52,3 +52,42 @@ function add_site_preview_shortcode() {
 	add_shortcode( 'site-preview', 'render_site_preview_shortcode' );
 }
 add_action( 'init', 'add_site_preview_shortcode' );
+
+add_action( 'rest_api_init', function() {
+	register_rest_route( 'colby', 'site-preview', [
+		'methods' => 'GET',
+		'callback' => function( $request ) {
+			$params = $request->get_params();
+
+			if ( ! $params['site-id'] ) {
+				return [ 'error' => 'No site ID provided.'];
+			}
+
+			switch_to_blog( $params['site-id'] );
+
+			$page_on_front = get_option( 'page_on_front' );
+
+			if ( ! $page_on_front ) {
+				return [ 'error' => 'No page on front set.'];
+			}
+
+			$data = [];
+
+			$data['siteName'] = get_bloginfo( 'name' );
+			$data['siteUrl'] = get_bloginfo( 'url' );
+			$data['featuredImage'] = wp_get_attachment_image_src(
+				get_post_thumbnail_id( $page_on_front ),
+				'hero'
+			);
+			$data['siteMenu'] = wp_get_nav_menu_items( 'Site Menu' );
+			$data['navBackground'] = get_field( 'nav_background_color', 'option' );
+			$data['navColor'] = get_field( 'nav_color', 'option' );
+			$data['accent'] = get_field( 'accent_color', 'option' );
+			$data['accentText'] = get_field( 'accent_text', 'option' );
+
+			restore_current_blog();
+
+			return $data;
+		}
+	] );
+} );
