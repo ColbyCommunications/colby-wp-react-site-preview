@@ -12,10 +12,13 @@ add_action( 'wp_enqueue_scripts', function() {
 		$min = PROD === true ? '.min' : '';
 		$dist = plugin_dir_url( __FILE__ ) . 'dist';
 
+		$package_json = json_decode( file_get_contents( __DIR__ . '/package.json' ) )
+		?: (object) [ 'version' => '1.0.1' ];
+
 		wp_enqueue_script(
 			'staff', "$dist/colby-wp-react-site-preview$min.js",
 			['react', 'react-dom', 'prop-types', 'date-fns'],
-			'',
+			$package_json->version,
 			true
 		);
 
@@ -23,7 +26,7 @@ add_action( 'wp_enqueue_scripts', function() {
 			'staff',
 			"$dist/colby-wp-react-site-preview$min.css",
 			['colby-bootstrap'],
-			''
+			$package_json->version
 		);
 	}
  }, 10, 1 );

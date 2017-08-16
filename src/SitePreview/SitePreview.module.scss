@@ -2,6 +2,10 @@
 @import '~bootstrap/scss/mixins';
 @import '~colby-bootstrap/variables';
 
+:global([data-site-preview]) {
+  min-height: 400px;
+}
+
 @keyframes fadein {
   from {
     opacity: 0;
@@ -106,24 +110,18 @@
   @media screen and (min-width: map-get($grid-breakpoints, 'lg')) {
     padding: 2.25rem 3rem;
   }
-
-  > * {
-    transition: transform .2s;
-    transform: scale(1);
-  }
-
-  .preview:hover & {
-    text-decoration: none;
-
-    > * {
-      transform: scale(1.02);
-    }
-  }
 }
 
 .previewTextInner {
   display: flex;
   align-items: center;
+
+  transition: transform .2s;
+  transform: scale(1);
+
+  &:hover {
+    transform: scale(1.03);
+  }
 }
 
 .previewH1 {
@@ -163,6 +161,7 @@
   transition: opacity 1.5s;
   padding: 0;
   cursor: pointer;
+  margin-bottom: .5rem;
 
   .loaded & {
     opacity: 1;

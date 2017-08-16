@@ -75,10 +75,10 @@ class SitePreview extends React.Component {
               <h1 className={styles.previewH1}>
                 {siteName}
               </h1>
+              <button className={styles.previewButton}>
+                <RightArrow />
+              </button>
             </div>
-            <button className={styles.previewButton}>
-              <RightArrow />
-            </button>
           </div>
         </a>
         <nav className={styles.siteMenu}>

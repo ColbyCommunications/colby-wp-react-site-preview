@@ -198,12 +198,12 @@ var SitePreview = function (_React$Component) {
                 'h1',
                 { className: _SitePreviewModule2.default.previewH1 },
                 siteName
+              ),
+              _react2.default.createElement(
+                'button',
+                { className: _SitePreviewModule2.default.previewButton },
+                _react2.default.createElement(_rightArrow2.default, null)
               )
-            ),
-            _react2.default.createElement(
-              'button',
-              { className: _SitePreviewModule2.default.previewButton },
-              _react2.default.createElement(_rightArrow2.default, null)
             )
           )
         ),
