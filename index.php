@@ -16,14 +16,14 @@ add_action( 'wp_enqueue_scripts', function() {
 		?: (object) [ 'version' => '1.0.1' ];
 
 		wp_enqueue_script(
-			'staff', "$dist/colby-wp-react-site-preview$min.js",
+			'site-preview', "$dist/colby-wp-react-site-preview$min.js",
 			['react', 'react-dom', 'prop-types', 'date-fns'],
 			$package_json->version,
 			true
 		);
 
 		wp_enqueue_style(
-			'staff',
+			'site-preview',
 			"$dist/colby-wp-react-site-preview$min.css",
 			['colby-bootstrap'],
 			$package_json->version
