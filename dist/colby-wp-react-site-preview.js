@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -74,12 +74,6 @@ module.exports = React;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-module.exports = PropTypes;
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91,7 +85,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _propTypes = __webpack_require__(1);
+var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -99,7 +93,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SitePreviewModule = __webpack_require__(6);
+var _SitePreviewModule = __webpack_require__(4);
 
 var _SitePreviewModule2 = _interopRequireDefault(_SitePreviewModule);
 
@@ -227,14 +221,13 @@ SitePreview.propTypes = {
 exports.default = SitePreview;
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports) {
 
 module.exports = ReactDOM;
 
 /***/ }),
-/* 4 */,
-/* 5 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -244,11 +237,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(3);
+var _reactDom = __webpack_require__(2);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _SitePreview = __webpack_require__(2);
+var _SitePreview = __webpack_require__(1);
 
 var _SitePreview2 = _interopRequireDefault(_SitePreview);
 
@@ -263,11 +256,17 @@ var init = function init() {
 window.addEventListener('load', init);
 
 /***/ }),
-/* 6 */
+/* 4 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 module.exports = {"SitePreview":"SitePreview--1NbU1","fadein":"fadein--1WKH5","preview":"preview--OkkFI","previewText":"previewText--1ov5k","previewTextInner":"previewTextInner--15JHj","previewH1":"previewH1--1N4vc","siteMenu":"siteMenu--1vobG"};
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = PropTypes;
 
 /***/ })
 /******/ ]);

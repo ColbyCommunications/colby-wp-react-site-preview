@@ -72,7 +72,7 @@
   }
 
   &:hover:before {
-    background-color: rgba($white, .6);
+    background-color: rgba($blue, .8);
   }
 
   @include make-col(12);
@@ -122,14 +122,13 @@
 .previewH1 {
   text-shadow: 0 0 5px rgba($black, .7);
   color: white;
-  transition: color .2s, text-shadow .2s;
+  transition: color .2s;
   position: relative;
   z-index: 9;
   font-size: 2.38rem;
 
   .preview:hover & {
-    color: $blue;
-    text-shadow: 0 0 1px rgba($blue, .2);
+    color: $white;
   }
 }
 
@@ -155,7 +154,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   padding: 1.5rem;
-  background: rgba($blue, .85);
+  background: $blue;
   width: 100%;
 
   a {
