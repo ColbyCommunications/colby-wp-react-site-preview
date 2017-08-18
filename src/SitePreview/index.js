@@ -1,20 +1,12 @@
 /* eslint react/no-danger: 0 */
 import PropTypes from 'prop-types';
 import React from 'react';
-import RightArrow from 'colby-wp-svg/jsx/right-arrow';
 
-import UpdatesFromEndpoint from './UpdatesFromEndpoint';
 import styles from './SitePreview.module.scss';
 
 class SitePreview extends React.Component {
   static propTypes = {
     siteId: PropTypes.string.isRequired,
-    updatesEndpoint: PropTypes.string.isRequired,
-    updatesMoreLink: PropTypes.string,
-  };
-
-  static defaultProps = {
-    updatesMoreLink: null,
   };
 
   constructor(props) {
@@ -45,18 +37,10 @@ class SitePreview extends React.Component {
       return null;
     }
 
-    const {
-      siteUrl,
-      featuredImage,
-      siteMenu,
-      siteName,
-      accent,
-      accentText,
-    } = this.state.data;
+    const { siteUrl, featuredImage, siteMenu, siteName } = this.state.data;
 
     return (
-      <section
-        style={{ backgroundImage: `url('${featuredImage[0]}')` }}
+      <div
         className={[
           styles.SitePreview,
           this.state.loaded ? styles.loaded : '',
@@ -72,12 +56,9 @@ class SitePreview extends React.Component {
         >
           <div className={styles.previewText}>
             <div className={styles.previewTextInner}>
-              <h1 className={styles.previewH1}>
+              <h1 className={`${styles.previewH1} display-1`}>
                 {siteName}
               </h1>
-              <button className={styles.previewButton}>
-                <RightArrow />
-              </button>
             </div>
           </div>
         </a>
@@ -104,13 +85,7 @@ class SitePreview extends React.Component {
             );
           })}
         </nav>
-        <UpdatesFromEndpoint
-          accent={accent}
-          accentText={accentText}
-          updatesEndpoint={this.props.updatesEndpoint}
-          moreLink={this.props.updatesMoreLink}
-        />
-      </section>
+      </div>
     );
   }
 }

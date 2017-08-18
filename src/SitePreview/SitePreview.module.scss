@@ -22,7 +22,7 @@
   display: flex;
   overflow: hidden;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
   margin-bottom: 2.25rem;
   border-radius: 2px;
   background-size: cover;
@@ -40,25 +40,9 @@
     animation-fill-mode: both;
   }
 
-  @media screen and (max-width: map-get($grid-breakpoints, 'md')) {
-    background-image: none !important;
-  }
-
   @media screen and (min-width: map-get($grid-breakpoints, 'md')) {
     min-height: none;
     flex-direction: row;
-  }
-
-  &:before {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    content: '';
-    z-index: -1;
-    pointer-events: none;
-    background-color: rgba($black, .25);
   }
 }
 
@@ -69,18 +53,33 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  margin-top: auto;
   min-height: 200px;
   width: 100%;
   background-size: cover;
   background-position: center;
+
+  &:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    background-color: rgba($black, .15);
+    z-index: 0;
+    pointer-events: none;
+    transition: background-color .2s;
+  }
+
+  &:hover:before {
+    background-color: rgba($white, .6);
+  }
 
   @include make-col(12);
 
   @media screen and (min-width: map-get($grid-breakpoints, 'md')) {
     @include make-col(8);
     min-height: none;
-    background-image: none !important;
   }
 
   @media screen and (min-width: map-get($grid-breakpoints, 'xl')) {
@@ -100,9 +99,10 @@
 
 .previewText {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-end;
+  justify-content: flex-end;
   padding: 1.5rem;
+  min-height: 400px;
   margin-left: auto;
   margin-top: auto;
   transition: background-color .2s, transform .2s;
@@ -115,62 +115,21 @@
 .previewTextInner {
   display: flex;
   align-items: center;
-
   transition: transform .2s;
   transform: scale(1);
-
-  &:hover {
-    transform: scale(1.03);
-  }
 }
 
 .previewH1 {
-  margin-right: 3rem;
-  margin-bottom: 0;
-  color: white;
   text-shadow: 0 0 5px rgba($black, .7);
-  line-height: 1;
-  opacity: 0;
-  font-weight: 600;
-  transition: transform 1.8s ease-out, opacity 1.5s;
-  transform: translateX(-45px);
-  font-size: 1.682rem;
+  color: white;
+  transition: color .2s, text-shadow .2s;
+  position: relative;
+  z-index: 9;
+  font-size: 2.38rem;
 
-  @media screen and (min-width: map-get($grid-breakpoints, 'md')) {
-    font-size: 2rem;
-  }
-
-  .loaded & {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.previewButton {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 2rem;
-  height: 2rem;
-  border: none;
-  border-radius: 1rem;
-  background: $orange;
-  opacity: 0;
-  transition: opacity 1.5s;
-  padding: 0;
-  cursor: pointer;
-  margin-bottom: .5rem;
-
-  .loaded & {
-    opacity: 1;
-  }
-
-  svg {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: white;
+  .preview:hover & {
+    color: $blue;
+    text-shadow: 0 0 1px rgba($blue, .2);
   }
 }
 
@@ -179,18 +138,10 @@
 
   @media screen and (min-width: map-get($grid-breakpoints, 'md')) {
     @include make-col(4);
-
-    :global(.section [data-site-preview]:nth-of-type(even)) & {
-      order: -1;
-    }
   }
 
   @media screen and (min-width: map-get($grid-breakpoints, 'lg')) {
     @include make-col(4);
-
-    :global(.section [data-site-preview]:nth-of-type(even)) & {
-      order: -1;
-    }
   }
 
   @media screen and (min-width: map-get($grid-breakpoints, 'xl')) {
@@ -232,7 +183,6 @@
   @media screen and (min-width: map-get($grid-breakpoints, 'md')) {
     flex-direction: column;
     justify-content: center;
-    min-height: 400px;
     width: auto;
 
     a {
