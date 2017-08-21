@@ -17,16 +17,9 @@ add_action( 'wp_enqueue_scripts', function() {
 
 		wp_enqueue_script(
 			'site-preview', "$dist/colby-wp-react-site-preview$min.js",
-			['react', 'react-dom', 'prop-types', 'date-fns'],
+			['react', 'react-dom', 'prop-types'],
 			$package_json->version,
 			true
-		);
-
-		wp_enqueue_style(
-			'site-preview',
-			"$dist/colby-wp-react-site-preview$min.css",
-			['colby-bootstrap'],
-			$package_json->version
 		);
 	}
  }, 10, 1 );
@@ -84,6 +77,7 @@ add_action( 'rest_api_init', function() {
 			$data['navColor'] = get_field( 'nav_color', 'option' );
 			$data['accent'] = get_field( 'accent_color', 'option' );
 			$data['accentText'] = get_field( 'accent_text', 'option' );
+			$data['description'] = get_bloginfo( 'description');
 
 			restore_current_blog();
 

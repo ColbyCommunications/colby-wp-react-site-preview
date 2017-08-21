@@ -55,7 +55,8 @@
     "date-fns": "^1.28.5",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-lazyload": "^2.2.7"
   },
   "babel": {
     "presets": [

@@ -68,7 +68,6 @@ const main = () => {
       'prop-types': 'PropTypes',
       'react': 'React',
       'react-dom': 'ReactDOM',
-      'date-fns': 'dateFns',
     },
     target: 'web',
     devtool: PROD ? false : 'source-maps',
