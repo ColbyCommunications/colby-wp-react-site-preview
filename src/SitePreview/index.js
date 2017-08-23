@@ -54,7 +54,7 @@ class SitePreview extends React.Component {
             href={siteUrl}
             style={{ backgroundImage: `url('${featuredImage[0]}')` }}
             className={
-              'bigPanel sitePreview h-xs row no-gutters px-5 py-1' +
+              'bigPanel sitePreview row no-gutters px-3 py-3 ' +
               'col-12 col-md-9'
             }
           >
