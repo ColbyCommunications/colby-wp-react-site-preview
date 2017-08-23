@@ -556,7 +556,7 @@ var SitePreview = function (_React$Component) {
               },
               href: siteUrl,
               style: { backgroundImage: 'url(\'' + featuredImage[0] + '\')' },
-              className: 'bigPanel sitePreview row no-gutters px-3 py-3 ' + 'col-12 col-md-9'
+              className: 'bigPanel sitePreview row no-gutters px-3 py-4 ' + 'col-12 col-md-9'
             },
             _react2.default.createElement(
               'div',
