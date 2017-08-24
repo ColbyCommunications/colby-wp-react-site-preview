@@ -27,7 +27,7 @@ add_action( 'wp_enqueue_scripts', function() {
 
 
 function render_site_preview_shortcode( $atts ) {
-	if ( ! $atts['site-id'] || ! $atts['updates-endpoint'] || ! $atts['updates-more-link'] ) {
+	if ( ! $atts['site-id'] ) {
 		return '';
 	}
 
