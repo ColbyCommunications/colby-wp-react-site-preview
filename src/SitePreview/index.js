@@ -17,6 +17,7 @@ class SitePreview extends React.Component {
     };
 
     this.fetchData = this.fetchData.bind(this);
+    this.renderSection = this.renderSection.bind(this);
   }
 
   componentDidMount() {
@@ -31,21 +32,11 @@ class SitePreview extends React.Component {
     });
   }
 
-  render() {
-    if (this.state.data === null) {
-      return null;
-    }
-
-    const {
-      siteUrl,
-      featuredImage,
-      siteMenu,
-      siteName,
-      description,
-    } = this.state.data;
+  renderSection(section) {
+    const { siteUrl, featuredImage, siteMenu, siteName, description } = section;
 
     return (
-      <LazyLoad height="auto" once offset={200}>
+      <LazyLoad key={siteUrl} height="auto" once offset={200}>
         <div className="row no-gutters mb-3 flex-row">
           <a
             ref={(link) => {
@@ -99,6 +90,18 @@ class SitePreview extends React.Component {
           </nav>
         </div>
       </LazyLoad>
+    );
+  }
+
+  render() {
+    if (this.state.data === null) {
+      return null;
+    }
+
+    return (
+      <div>
+        {this.state.data.map(this.renderSection)}
+      </div>
     );
   }
 }

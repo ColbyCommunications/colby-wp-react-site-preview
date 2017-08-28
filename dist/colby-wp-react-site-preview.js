@@ -505,6 +505,7 @@ var SitePreview = function (_React$Component) {
     };
 
     _this.fetchData = _this.fetchData.bind(_this);
+    _this.renderSection = _this.renderSection.bind(_this);
     return _this;
   }
 
@@ -526,25 +527,20 @@ var SitePreview = function (_React$Component) {
       });
     }
   }, {
-    key: 'render',
-    value: function render() {
+    key: 'renderSection',
+    value: function renderSection(section) {
       var _this3 = this;
 
-      if (this.state.data === null) {
-        return null;
-      }
-
-      var _state$data = this.state.data,
-          siteUrl = _state$data.siteUrl,
-          featuredImage = _state$data.featuredImage,
-          siteMenu = _state$data.siteMenu,
-          siteName = _state$data.siteName,
-          description = _state$data.description;
+      var siteUrl = section.siteUrl,
+          featuredImage = section.featuredImage,
+          siteMenu = section.siteMenu,
+          siteName = section.siteName,
+          description = section.description;
 
 
       return _react2.default.createElement(
         _reactLazyload2.default,
-        { height: 'auto', once: true, offset: 200 },
+        { key: siteUrl, height: 'auto', once: true, offset: 200 },
         _react2.default.createElement(
           'div',
           { className: 'row no-gutters mb-3 flex-row' },
@@ -600,6 +596,19 @@ var SitePreview = function (_React$Component) {
             })
           )
         )
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (this.state.data === null) {
+        return null;
+      }
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        this.state.data.map(this.renderSection)
       );
     }
   }]);
