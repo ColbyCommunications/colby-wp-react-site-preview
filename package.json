@@ -1,6 +1,6 @@
 {
   "name": "colby-wp-react-site-preview",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "A site preview component and WordPress shortcode",
   "main": "src/",
   "scripts": {
