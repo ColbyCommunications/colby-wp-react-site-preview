@@ -6,7 +6,10 @@ const init = () => {
   Array.prototype.forEach.call(
     document.querySelectorAll('[data-site-preview]'),
     (container) => {
-      ReactDOM.render(<SitePreview {...container.dataset} />, container);
+      ReactDOM.render(
+        <SitePreview {...container.dataset} innerHTML={container.innerHTML} />,
+        container
+      );
     }
   );
 };

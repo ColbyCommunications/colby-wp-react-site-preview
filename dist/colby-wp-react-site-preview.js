@@ -209,7 +209,7 @@ var SitePreview = function (_React$Component) {
     key: 'render',
     value: function render() {
       if (this.state.data === null) {
-        return null;
+        return _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: this.props.innerHTML } });
       }
 
       return _react2.default.createElement(
@@ -224,7 +224,11 @@ var SitePreview = function (_React$Component) {
 }(_react2.default.Component);
 
 SitePreview.propTypes = {
-  siteId: _propTypes2.default.string.isRequired
+  siteId: _propTypes2.default.string.isRequired,
+  innerHTML: _propTypes2.default.string
+};
+SitePreview.defaultProps = {
+  innerHTML: ''
 };
 exports.default = SitePreview;
 
@@ -240,6 +244,8 @@ module.exports = ReactDOM;
 
 "use strict";
 
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = __webpack_require__(0);
 
@@ -257,7 +263,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var init = function init() {
   Array.prototype.forEach.call(document.querySelectorAll('[data-site-preview]'), function (container) {
-    _reactDom2.default.render(_react2.default.createElement(_SitePreview2.default, container.dataset), container);
+    _reactDom2.default.render(_react2.default.createElement(_SitePreview2.default, _extends({}, container.dataset, { innerHTML: container.innerHTML })), container);
   });
 };
 

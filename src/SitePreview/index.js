@@ -5,6 +5,11 @@ import React from 'react';
 class SitePreview extends React.Component {
   static propTypes = {
     siteId: PropTypes.string.isRequired,
+    innerHTML: PropTypes.string,
+  };
+
+  static defaultProps = {
+    innerHTML: '',
   };
 
   constructor(props) {
@@ -91,7 +96,7 @@ class SitePreview extends React.Component {
 
   render() {
     if (this.state.data === null) {
-      return null;
+      return <div dangerouslySetInnerHTML={{ __html: this.props.innerHTML }} />;
     }
 
     return (
