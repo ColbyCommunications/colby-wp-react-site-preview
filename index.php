@@ -35,6 +35,11 @@ function render_site_preview_shortcode( $atts ) {
 <div
   data-site-preview
   data-site-id=\"{$atts['site-id']}\">
+	<div class='animated-ellipsis-container'>
+		<div class='animated-ellipsis'>
+			<span>.</span><span>.</span><span>.</span>
+		</div>
+	</div>
 </div>
 ";
 }
