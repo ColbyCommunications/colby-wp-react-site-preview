@@ -322,7 +322,7 @@ var Section = function (_React$Component) {
   }, {
     key: 'shouldRender',
     value: function shouldRender(menuItem) {
-      return menuItem.menu_item_parent !== '0' && menuItem.url === '#' && menuItem.url === this.props.siteUrl + '/';
+      return !(menuItem.menu_item_parent !== '0' || menuItem.url === '#' || menuItem.url === this.props.siteUrl + '/');
     }
   }, {
     key: 'handleIntersectionObserver',

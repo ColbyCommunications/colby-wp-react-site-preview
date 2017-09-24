@@ -59,9 +59,9 @@ class Section extends React.Component {
   }
 
   shouldRender(menuItem) {
-    return (
-      menuItem.menu_item_parent !== '0' &&
-      menuItem.url === '#' &&
+    return !(
+      menuItem.menu_item_parent !== '0' ||
+      menuItem.url === '#' ||
       menuItem.url === `${this.props.siteUrl}/`
     );
   }
