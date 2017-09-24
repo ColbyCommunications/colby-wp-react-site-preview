@@ -328,7 +328,7 @@ var Section = function (_React$Component) {
     key: 'handleIntersectionObserver',
     value: function handleIntersectionObserver() {
       this.observer = new IntersectionObserver(this.makeVisible, {
-        threshold: 0.5
+        threshold: 0
       });
 
       this.observer.observe(this.rootElement);
@@ -354,7 +354,11 @@ var Section = function (_React$Component) {
           description = _props.description;
 
 
-      var style = this.state.hasBeenObserved === true ? { backgroundImage: 'url(\'' + featuredImage[0] + '\')' } : {};
+      var style = this.state.hasBeenObserved === true ? {
+        backgroundImage: 'url(\'' + featuredImage[0] + '\')',
+        opacity: 1,
+        transition: 'opacity .4s'
+      } : { opacity: 0, transition: 'opacity .4s' };
 
       return _react2.default.createElement(
         'a',

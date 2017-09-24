@@ -68,7 +68,7 @@ class Section extends React.Component {
 
   handleIntersectionObserver() {
     this.observer = new IntersectionObserver(this.makeVisible, {
-      threshold: 0.5,
+      threshold: 0,
     });
 
     this.observer.observe(this.rootElement);
@@ -87,8 +87,12 @@ class Section extends React.Component {
 
     const style =
       this.state.hasBeenObserved === true
-        ? { backgroundImage: `url('${featuredImage[0]}')` }
-        : {};
+        ? {
+          backgroundImage: `url('${featuredImage[0]}')`,
+          opacity: 1,
+          transition: 'opacity .4s',
+        }
+        : { opacity: 0, transition: 'opacity .4s' };
 
     return (
       <a
