@@ -6,10 +6,13 @@ const init = () => {
   Array.prototype.forEach.call(
     document.querySelectorAll('[data-site-preview]'),
     (container) => {
-      ReactDOM.render(
-        <SitePreview {...container.dataset} innerHTML={container.innerHTML} />,
-        container
-      );
+      const siteId = container.getAttribute('data-site-id');
+      if (siteId) {
+        ReactDOM.render(
+          <SitePreview siteId={siteId} innerHTML={container.innerHTML} />,
+          container
+        );
+      }
     }
   );
 };

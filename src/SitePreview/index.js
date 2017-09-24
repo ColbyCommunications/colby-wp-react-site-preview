@@ -40,7 +40,10 @@ class SitePreview extends React.Component {
     const { siteUrl, featuredImage, siteMenu, siteName, description } = section;
 
     return (
-      <div className="row no-gutters mb-3 flex-row">
+      <div
+        className="row no-gutters mb-3 flex-row"
+        key={Math.random().toString(36).substring(7)}
+      >
         <a
           ref={(link) => {
             this.link = link;
@@ -48,7 +51,7 @@ class SitePreview extends React.Component {
           href={siteUrl}
           style={{ backgroundImage: `url('${featuredImage[0]}')` }}
           className={
-            'bigPanel sitePreview row no-gutters px-3 py-4 ' + 'col-12 col-md-9'
+            'bigPanel sitePreview row no-gutters px-3 py-4 col-12 col-md-9'
           }
         >
           <div className="ml-auto mt-auto col-md-9 col-lg-7">

@@ -151,7 +151,10 @@ var SitePreview = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'row no-gutters mb-3 flex-row' },
+        {
+          className: 'row no-gutters mb-3 flex-row',
+          key: Math.random().toString(36).substring(7)
+        },
         _react2.default.createElement(
           'a',
           {
@@ -160,7 +163,7 @@ var SitePreview = function (_React$Component) {
             },
             href: siteUrl,
             style: { backgroundImage: 'url(\'' + featuredImage[0] + '\')' },
-            className: 'bigPanel sitePreview row no-gutters px-3 py-4 ' + 'col-12 col-md-9'
+            className: 'bigPanel sitePreview row no-gutters px-3 py-4 col-12 col-md-9'
           },
           _react2.default.createElement(
             'div',
@@ -245,8 +248,6 @@ module.exports = ReactDOM;
 "use strict";
 
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -263,7 +264,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var init = function init() {
   Array.prototype.forEach.call(document.querySelectorAll('[data-site-preview]'), function (container) {
-    _reactDom2.default.render(_react2.default.createElement(_SitePreview2.default, _extends({}, container.dataset, { innerHTML: container.innerHTML })), container);
+    var siteId = container.getAttribute('data-site-id');
+    if (siteId) {
+      _reactDom2.default.render(_react2.default.createElement(_SitePreview2.default, { siteId: siteId, innerHTML: container.innerHTML }), container);
+    }
   });
 };
 
