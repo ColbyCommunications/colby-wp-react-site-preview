@@ -4,4 +4,14 @@ A site preview component and WordPress shortcode
 
 ## Usage
 
-// To-do
+
+<!-- DOCGEN shortcode start -->
+#### site-preview
+
+[site-preview]
+
+Renders a preview of another site consisting of a the front page featured image and navigation.
+##### Attributes #####
+`site-id` _(required)_ A site ID or a comma-separated list of site IDs.
+
+<!-- DOCGEN shortcode end -->

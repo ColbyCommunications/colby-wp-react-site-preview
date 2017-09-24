@@ -1,6 +1,7 @@
 /* eslint react/no-danger: 0 */
 import PropTypes from 'prop-types';
 import React from 'react';
+import Section from './Section';
 
 class SitePreview extends React.Component {
   static propTypes = {
@@ -18,93 +19,92 @@ class SitePreview extends React.Component {
     this.state = {
       data: null,
       loaded: true,
+      dead: false,
     };
 
     this.fetchData = this.fetchData.bind(this);
-    this.renderSection = this.renderSection.bind(this);
+    this.maybeLoadFromCache = this.maybeLoadFromCache.bind(this);
+    this.fetchFromWeb = this.fetchFromWeb.bind(this);
+    this.handleWebFetchResponse = this.handleWebFetchResponse.bind(this);
+    this.die = this.die.bind(this);
   }
 
   componentDidMount() {
-    this.fetchData();
+    if (window.SITE_PREVIEW_REST_URL) {
+      this.url = `${window.SITE_PREVIEW_REST_URL}?site-id=${this.props.siteId}`;
+      this.fetchData();
+    } else {
+      this.die();
+    }
   }
 
-  fetchData() {
-    const url = `${window.COLBY_REST_URL}colby/site-preview/?site-id=${this
-      .props.siteId}`;
-    fetch(url).then((response) => response.json()).then((data) => {
-      this.setState({ data });
+  die() {
+    this.setState({ dead: true });
+  }
+
+  maybeLoadFromCache() {
+    return new Promise((resolve) => {
+      try {
+        const savedData = JSON.parse(window.localStorage.getItem(this.url));
+        if (
+          savedData &&
+          // The saved data is less than an hour old.
+          Math.abs(savedData.date - new Date().getTime()) < 60 * 60 * 1000
+        ) {
+          this.setState({ data: savedData.data }, () => {
+            resolve(true);
+          });
+        } else {
+          resolve(false);
+        }
+      } catch (e) {
+        resolve(false);
+      }
     });
   }
 
-  renderSection(section) {
-    const { siteUrl, featuredImage, siteMenu, siteName, description } = section;
+  handleWebFetchResponse(data) {
+    this.setState({ data }, () => {
+      window.localStorage.setItem(
+        this.url,
+        JSON.stringify({ data, date: new Date().getTime() })
+      );
+    });
+  }
 
-    return (
-      <div
-        className="row no-gutters mb-3 flex-row"
-        key={Math.random().toString(36).substring(7)}
-      >
-        <a
-          ref={(link) => {
-            this.link = link;
-          }}
-          href={siteUrl}
-          style={{ backgroundImage: `url('${featuredImage[0]}')` }}
-          className={
-            'bigPanel sitePreview row no-gutters px-3 py-4 col-12 col-md-9'
-          }
-        >
-          <div className="ml-auto mt-auto col-md-9 col-lg-7">
-            <h1 className="display-1">
-              {siteName}
-            </h1>
-            <h2 className="display-2">
-              {description}
-            </h2>
-          </div>
-        </a>
+  fetchFromWeb() {
+    fetch(this.url, { cache: 'force-cache' })
+      .then((response) => response.json())
+      .then(this.handleWebFetchResponse);
+  }
 
-        <nav
-          className={
-            'list-group list-group-primary col-md-3 flex-wrap' +
-            ' flex-row flex-md-column justify-content-center'
-          }
-        >
-          {siteMenu.map((menuItem) => {
-            if (menuItem.menu_item_parent !== '0') {
-              return null;
-            }
-
-            if (menuItem.url === '#') {
-              return null;
-            }
-
-            if (menuItem.url === `${siteUrl}/`) {
-              return null;
-            }
-
-            return (
-              <a
-                className="list-group-item-action list-group-item"
-                href={menuItem.url}
-                key={menuItem.ID}
-                dangerouslySetInnerHTML={{ __html: menuItem.title }}
-              />
-            );
-          })}
-        </nav>
-      </div>
-    );
+  fetchData() {
+    this.maybeLoadFromCache().then((wasLoadedFromCache) => {
+      if (!wasLoadedFromCache) {
+        this.fetchFromWeb();
+      }
+    });
   }
 
   render() {
+    if (this.state.dead === true) {
+      return null;
+    }
+
     if (this.state.data === null) {
-      return <div dangerouslySetInnerHTML={{ __html: this.props.innerHTML }} />;
+      return (
+        <div
+          style={{ minHeight: '100vh' }}
+          dangerouslySetInnerHTML={{ __html: this.props.innerHTML }}
+        />
+      );
     }
 
     return (
       <div>
-        {this.state.data.map(this.renderSection)}
+        {this.state.data.map((section) =>
+          <Section key={Math.random().toString(36).substring(7)} {...section} />
+        )}
       </div>
     );
   }
