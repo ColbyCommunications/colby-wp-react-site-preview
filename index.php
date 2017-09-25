@@ -22,7 +22,7 @@ function enqueue_site_preview_scripts() {
 
 		wp_enqueue_script(
 			'site-preview', "$dist/colby-wp-react-site-preview$min.js",
-			[ 'react', 'react-dom', 'prop-types' ],
+			[ 'prop-types' ],
 			$package_json->version,
 			true
 		);

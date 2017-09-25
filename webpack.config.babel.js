@@ -66,8 +66,12 @@ const main = () => {
     },
     externals: {
       'prop-types': 'PropTypes',
-      'react': 'React',
-      'react-dom': 'ReactDOM',
+    },
+    resolve: {
+      alias: {
+        'react': 'preact-compat',
+        'react-dom': 'preact-compat',
+      },
     },
     target: 'web',
     devtool: PROD ? false : 'source-maps',
