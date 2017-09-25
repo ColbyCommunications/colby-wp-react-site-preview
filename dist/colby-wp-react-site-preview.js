@@ -2177,7 +2177,7 @@ var Section = function (_React$Component) {
         entry = { isIntersecting: true };
       }
 
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting !== false) {
         this.setState({ hasBeenObserved: true });
         this.observer = null;
       }
