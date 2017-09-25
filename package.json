@@ -1,6 +1,6 @@
 {
   "name": "colby-wp-react-site-preview",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "A site preview component and WordPress shortcode",
   "main": "src/",
   "scripts": {
@@ -9,7 +9,10 @@
     "build-all": "npm run build && npm run build-dev"
   },
   "author": "John Watkins",
-  "keywords": ["react", "wordpress"],
+  "keywords": [
+    "react",
+    "wordpress"
+  ],
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -30,11 +33,20 @@
     "webpack": "^2.5.0",
     "webpack-bundle-analyzer": "^2.9.0"
   },
-  "browserslist": ["> 1%", "last 2 versions", "IE 11"],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "IE 11"
+  ],
   "eslintConfig": {
-    "extends": ["johnwatkins0"]
+    "extends": [
+      "johnwatkins0"
+    ]
   },
-  "eslintIgnore": ["dist/*.js", "postcss.config.js"],
+  "eslintIgnore": [
+    "dist/*.js",
+    "postcss.config.js"
+  ],
   "dependencies": {
     "bootstrap": "git://github.com/twbs/bootstrap.git#v4-dev",
     "colby-bootstrap": "^1.0.2",
@@ -44,6 +56,9 @@
     "prop-types": "^15.5.10"
   },
   "babel": {
-    "presets": ["es2015", "react"]
+    "presets": [
+      "es2015",
+      "react"
+    ]
   }
 }
