@@ -99,13 +99,15 @@ function handle_site_preview_rest_route_request( WP_REST_Request $request ) {
 		);
 	}
 
-	$saved_response = get_transient( str_replace( ',', '', "preview{$params['site-id']}" ) );
-	if ( $saved_response ) {
-		return new WP_REST_Response(
-			is_serialized( $saved_response )
+	if ( empty( $_GET['clear-preview-cache'] ) ) {
+		$saved_response = get_transient( str_replace( ',', '', "preview{$params['site-id']}" ) );
+		if ( $saved_response ) {
+			return new WP_REST_Response(
+				is_serialized( $saved_response )
 				? unserialize( $saved_response )
 				: $saved_response
-		);
+			);
+		}
 	}
 
 	$response = array_map( 'assemble_site_preview_data', explode( ',', $params['site-id'] ) );

@@ -44,6 +44,10 @@ class SitePreview extends React.Component {
 
   maybeLoadFromCache() {
     return new Promise((resolve) => {
+      if (window.location.href.indexOf('clear-preview-cache') > -1) {
+        resolve(false);
+      }
+
       try {
         const savedData = JSON.parse(window.localStorage.getItem(this.url));
         if (

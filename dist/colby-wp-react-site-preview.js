@@ -851,6 +851,10 @@ var SitePreview = function (_React$Component) {
       var _this2 = this;
 
       return new Promise(function (resolve) {
+        if (window.location.href.indexOf('clear-preview-cache') > -1) {
+          resolve(false);
+        }
+
         try {
           var savedData = JSON.parse(window.localStorage.getItem(_this2.url));
           if (savedData &&
