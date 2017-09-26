@@ -1,6 +1,6 @@
 # colby-wp-react-site-preview
 
-A site preview component and WordPress shortcode
+A site preview component and WordPress shortcode. Meant for Colby College websites and depends on assets provided by other Colby WordPress products. 
 
 ## Usage
 
