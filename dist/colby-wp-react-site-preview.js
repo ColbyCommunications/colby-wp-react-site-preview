@@ -2182,6 +2182,7 @@ var Section = function (_React$Component) {
       }
 
       if (entry.isIntersecting !== false) {
+        // isIntersecting is undefined in Edge, so check for false rather than true. 
         this.setState({ hasBeenObserved: true });
         this.observer = null;
       }
