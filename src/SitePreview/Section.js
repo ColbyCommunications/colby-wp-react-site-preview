@@ -52,7 +52,7 @@ class Section extends React.Component {
       entry = { isIntersecting: true };
     }
 
-    if (entry.isIntersecting !== false) {
+    if (entry.isIntersecting !== false) { // isIntersecting is undefined in Edge, so check for false rather than true. 
       this.setState({ hasBeenObserved: true });
       this.observer = null;
     }
