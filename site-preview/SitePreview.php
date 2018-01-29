@@ -67,7 +67,7 @@ class SitePreview {
 			return;
 		}
 
-		$min = defined( 'PROD' ) && PROD === true ? '.min' : '';
+		$min  = defined( 'PROD' ) && PROD === true ? '.min' : '';
 		$dist = self::get_dist_directory();
 
 		wp_enqueue_style(

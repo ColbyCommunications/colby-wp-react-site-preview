@@ -42,14 +42,14 @@ class Shortcode {
 		}
 
 		return [
-			'site_name' => get_bloginfo( 'name' ),
-			'site_url' => get_bloginfo( 'url' ),
+			'site_name'      => get_bloginfo( 'name' ),
+			'site_url'       => get_bloginfo( 'url' ),
 			'featured_image' => wp_get_attachment_image_src(
 				get_post_thumbnail_id( $page_on_front ),
 				'medium-hero'
 			),
-			'site_menu' => wp_get_nav_menu_items( 'Site Menu' ),
-			'description' => get_bloginfo( 'description' ),
+			'site_menu'      => wp_get_nav_menu_items( 'Site Menu' ),
+			'description'    => get_bloginfo( 'description' ),
 		];
 	}
 
