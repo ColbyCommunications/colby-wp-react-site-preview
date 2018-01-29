@@ -1,7 +1,6 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import path from 'path';
 import webpack from 'webpack';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import packageJson from './package.json';
 
@@ -9,23 +8,9 @@ const main = () => {
   const PROD = process.argv.includes('-p');
   const watching = process.argv.includes('--watch');
   const min = PROD ? '.min' : '';
-  const entry = './src/index.js';
+  const entry = ['./src/js/index.js', './src/css/main.css'];
   const filename = `${packageJson.name}${min}.js`;
   const plugins = [new ExtractTextPlugin(`${packageJson.name}${min}.css`)];
-
-  if (PROD) {
-    plugins.push(
-      new webpack.optimize.UglifyJsPlugin({
-        output: {
-          comments: false,
-        },
-      })
-    );
-  }
-
-  if (!watching) {
-    plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'static' }));
-  }
 
   return {
     entry,
@@ -41,37 +26,30 @@ const main = () => {
           use: [
             {
               loader: 'babel-loader',
-              options: { presets: ['react', 'es2015', 'stage-1'] },
+              options: {
+                presets: ['react', 'env', 'stage-0'],
+                plugins: [
+                  [
+                    'transform-runtime',
+                    {
+                      helpers: false,
+                      polyfill: false,
+                      regenerator: true,
+                    },
+                  ],
+                ],
+              },
             },
           ],
         },
         {
-          test: /\.scss$/,
+          test: /\.css$/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  modules: true,
-                  localIdentName: '[local]--[hash:base64:5]',
-                },
-              },
-              { loader: 'postcss-loader' },
-              { loader: 'sass-loader' },
-            ],
+            use: ['css-loader', 'postcss-loader'],
           }),
         },
       ],
-    },
-    externals: {
-      'prop-types': 'PropTypes',
-    },
-    resolve: {
-      alias: {
-        'react': 'preact-compat',
-        'react-dom': 'preact-compat',
-      },
     },
     target: 'web',
     devtool: PROD ? false : 'source-maps',

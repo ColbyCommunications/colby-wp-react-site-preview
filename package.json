@@ -1,49 +1,59 @@
 {
-  "name": "colby-wp-react-site-preview",
-  "version": "1.0.19",
-  "description": "A site preview component and WordPress shortcode",
+  "name": "wp-react-site-preview",
+  "version": "2.0.0",
+  "description":
+    "A React-based block displaying information about a WordPress site, using its homepage featured image and site menu. Built for Colby College sites.",
   "main": "src/",
   "scripts": {
+    "start": "webpack -w",
     "build": "webpack -p",
-    "build-dev": "webpack",
-    "build-all": "npm run build && npm run build-dev"
+    "lint": "eslint src/js",
+    "stylelint": "stylelint src/css/*.css --fix",
+    "prepare": "npm run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit":
+        "php demo/index.php > demo/index.html && npm run lint && npm run stylelint",
+      "pre-push": "npm run prepare"
+    }
   },
   "author": "John Watkins",
   "keywords": ["react", "wordpress"],
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^7.1.2",
-    "babel-cli": "^6.24.1",
-    "babel-loader": "^7.1.1",
-    "babel-preset-es2015": "^6.24.1",
+    "autoprefixer": "^7.2.5",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.1.2",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-1": "^6.24.1",
-    "babel-webpack": "^1.0.0",
-    "css-loader": "^0.28.4",
-    "eslint-config-johnwatkins0": "^1.0.2",
-    "extract-text-webpack-plugin": "^2.1.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.9",
+    "cssnano": "^3.10.0",
+    "eslint": "^4.14.0",
+    "eslint-config-fbjs": "^2.0.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-flowtype": "^2.40.1",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-relay": "^0.0.20",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "husky": "^0.15.0-beta.16",
     "node-autodeploy-wp": "^1.0.20",
-    "node-sass": "^4.5.2",
-    "postcss-loader": "^2.0.5",
-    "sass-loader": "^6.0.3",
-    "style-loader": "^0.17.0",
-    "webpack": "^2.5.0",
-    "webpack-bundle-analyzer": "^2.9.0"
+    "postcss-loader": "^2.0.10",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0",
+    "stylelint-order": "^0.8.0",
+    "style-loader": "^0.20.1",
+    "webpack": "^3.10.0"
   },
-  "browserslist": [">.1%"],
-  "eslintConfig": {
-    "extends": ["johnwatkins0"]
-  },
-  "eslintIgnore": ["dist/*.js", "postcss.config.js"],
   "dependencies": {
-    "bootstrap": "git://github.com/twbs/bootstrap.git#v4-dev",
-    "colby-bootstrap": "^1.0.2",
-    "colby-wp-svg": "^1.1.4",
-    "preact": "^8.2.5",
-    "preact-compat": "^3.17.0",
-    "prop-types": "^15.5.10"
-  },
-  "babel": {
-    "presets": ["es2015", "react"]
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "styled-components": "^3.1.3"
   }
 }

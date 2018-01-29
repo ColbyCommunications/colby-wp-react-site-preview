@@ -1,0 +1,32 @@
+{
+  "name": "colbycomms/wp-site-preview",
+  "description":
+    "A React-based block displaying information about a WordPress site, using its homepage featured image and site menu. Built for Colby College sites.",
+  "type": "library",
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^2.9.1",
+    "wp-coding-standards/wpcs": "^0.14.0",
+    "phpunit/phpunit": "^6.5"
+  },
+  "authors": [
+    {
+      "name": "John Watkins",
+      "email": "john.watkins@colby.edu"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": "^7.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "ColbyComms\\SitePreview\\": "site-preview/"
+    },
+    "files": ["site-preview/index.php"]
+  },
+  "scripts": {
+    "phpcbf": "phpcbf --extensions=php",
+    "lint": "phpcs --extensions=php -s",
+    "test": "composer lint"
+  }
+}
