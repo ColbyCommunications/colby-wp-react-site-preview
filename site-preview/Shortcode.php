@@ -77,8 +77,8 @@ class Shortcode {
 		$item = is_array( $item ) ? (object) $item : $item;
 
 		return "<a class=\"site-preview__nav-item\" href=\"{$item->url}\">
-            {$item->title}
-        </a>";
+			{$item->title}
+		</a>";
 	}
 
 	/**
@@ -94,21 +94,21 @@ class Shortcode {
 		);
 
 		return "
-    <div class=\"site-preview\" >
-        <a href=\"{$atts['site_url']}\" class=\"site-preview__main\" style=\"background-image: url('{$atts['featured_image'][0]}')\">
-            <div class=\"site-preview__main-inner\">
-                <h1 class=\"site-preview__title\">
-                    {$atts['site_name']}
-                </h1>
-                <h2 class=\"site-preview__description\">
-                    {$atts['description']}
-                </h2>
-            </div>
-        </a>
-        <nav class=\"site-preview__nav\">
-            $nav_items
-      </nav>
-    </div>
-    ";
+	<div class=\"site-preview\" >
+		<a href=\"{$atts['site_url']}\" class=\"site-preview__main\" style=\"background-image: url('{$atts['featured_image'][0]}')\">
+			<div class=\"site-preview__main-inner\">
+				<h1 class=\"site-preview__title\">
+					{$atts['site_name']}
+				</h1>
+				<h2 class=\"site-preview__description\">
+					{$atts['description']}
+				</h2>
+			</div>
+		</a>
+		<nav class=\"site-preview__nav\">
+			$nav_items
+	  </nav>
+	</div>
+	";
 	}
 }
