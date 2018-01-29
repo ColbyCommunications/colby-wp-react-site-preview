@@ -31,7 +31,7 @@ class Shortcode {
 			switch_to_blog( $site_id );
 		}
 
-			$page_on_front = get_option( 'page_on_front' );
+		$page_on_front = get_option( 'page_on_front' );
 
 		if ( ! $page_on_front ) {
 			return [];
@@ -41,16 +41,16 @@ class Shortcode {
 			restore_current_blog();
 		}
 
-			return [
-				'site_name' => get_bloginfo( 'name' ),
-				'site_url' => get_bloginfo( 'url' ),
-				'featured_image' => wp_get_attachment_image_src(
-					get_post_thumbnail_id( $page_on_front ),
-					'medium-hero'
-				),
-				'site_menu' => wp_get_nav_menu_items( 'Site Menu' ),
-				'description' => get_bloginfo( 'description' ),
-			];
+		return [
+			'site_name' => get_bloginfo( 'name' ),
+			'site_url' => get_bloginfo( 'url' ),
+			'featured_image' => wp_get_attachment_image_src(
+				get_post_thumbnail_id( $page_on_front ),
+				'medium-hero'
+			),
+			'site_menu' => wp_get_nav_menu_items( 'Site Menu' ),
+			'description' => get_bloginfo( 'description' ),
+		];
 	}
 
 	/**
@@ -62,9 +62,9 @@ class Shortcode {
 	public static function render_shortcode( array $atts = [] ) : string {
 		$atts['site-id'] = $atts['site-id'] ?? '1';
 
-			return self::render(
-				self::assemble_site_preview_data( $atts['side-id'] )
-			);
+		return self::render(
+			self::assemble_site_preview_data( $atts['side-id'] )
+		);
 	}
 
 	/**
