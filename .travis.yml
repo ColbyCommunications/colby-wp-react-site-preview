@@ -12,6 +12,6 @@ php:
 before_script:
   - yarn run lint
   - yarn run stylelint
-  - composer fix
+  - composer phpcbf
   - composer lint
 script: composer test
