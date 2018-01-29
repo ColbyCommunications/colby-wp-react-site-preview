@@ -1,6 +1,6 @@
 # colby-wp-site-preview
 
-A block displaying information about a WordPress site, using its homepage, featured image and site menu. Built for Colby College sites.
+A block displaying information about a WordPress site, using its homepage, it's front page's featured image, and its   site menu. Built for Colby College sites.
 
 [Demo](https://colbycommunications.github.io/wp-site-preview/demo/)
 
