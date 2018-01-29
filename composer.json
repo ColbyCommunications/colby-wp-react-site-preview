@@ -1,7 +1,7 @@
 {
   "name": "colbycomms/wp-site-preview",
   "description":
-    "A React-based block displaying information about a WordPress site, using its homepage featured image and site menu. Built for Colby College sites.",
+    "A block displaying information about a WordPress site, using its homepage featured image and site menu. Built for Colby College sites.",
   "type": "library",
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.9.1",

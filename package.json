@@ -1,8 +1,8 @@
 {
-  "name": "wp-react-site-preview",
+  "name": "wp-site-preview",
   "version": "2.0.0",
   "description":
-    "A React-based block displaying information about a WordPress site, using its homepage featured image and site menu. Built for Colby College sites.",
+  "A block displaying information about a WordPress site, using its homepage featured image and site menu. Built for Colby College sites.",
   "main": "src/",
   "scripts": {
     "start": "webpack -w",
