@@ -185,7 +185,7 @@ true
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=0" />
-<link rel="stylesheet" href="../dist/wp-react-site-preview.css" />
+<link rel="stylesheet" href="../dist/wp-site-preview.css" />
 <title>
 	WP React Site Preview demo
 </title>
@@ -204,4 +204,4 @@ main {
 <main>
 	<?php echo ColbyComms\SitePreview\Shortcode::render( $dummy_data ); ?>
 </main>
-<script src="../dist/wp-react-site-preview.js"></script>
+<script src="../dist/wp-site-preview.js"></script>

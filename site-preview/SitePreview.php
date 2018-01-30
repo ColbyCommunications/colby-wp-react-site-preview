@@ -37,14 +37,14 @@ class SitePreview {
 	 *
 	 * @var string
 	 */
-	const ENQUEUE_STYLE_FILTER = FILTER_NAMESPACE . 'enqueue_style';
+	const ENQUEUE_STYLE_FILTER = self::FILTER_NAMESPACE . 'enqueue_style';
 
 	/**
 	 * Filter name for this plugin's dist directory.
 	 *
 	 * @var string
 	 */
-	const DIST_DIRECTORY_FILTER = FILTER_NAMESPACE . 'dist_directory';
+	const DIST_DIRECTORY_FILTER = self::FILTER_NAMESPACE . 'dist_directory';
 
 	/**
 	 * Instantiates plugin.
