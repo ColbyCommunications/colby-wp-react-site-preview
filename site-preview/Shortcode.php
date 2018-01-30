@@ -60,10 +60,10 @@ class Shortcode {
 	 * @return string HTML.
 	 */
 	public static function render_shortcode( array $atts = [] ) : string {
-		$atts['site-id'] = $atts['site-id'] ?? '1';
+		$site_id = $atts['site-id'] ?? '1';
 
 		return self::render(
-			self::assemble_site_preview_data( $atts['side-id'] )
+			self::assemble_site_preview_data( $site_id )
 		);
 	}
 
