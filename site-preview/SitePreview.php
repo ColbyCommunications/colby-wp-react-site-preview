@@ -110,7 +110,7 @@ class SitePreview {
 		}
 
 		if ( file_exists( dirname( __DIR__, 3 ) . '/plugins' ) ) {
-			return plugin_dir_url( dirname( __DIR__ ) . '/index.php' ) . '/dist/';
+			return plugin_dir_url( dirname( __DIR__ ) . '/index.php' ) . 'dist';
 		}
 
 		return get_template_directory_uri() . '/vendor/colbycomms/' . self::TEXT_DOMAIN . '/dist/';

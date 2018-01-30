@@ -86,4 +86,4 @@ module.exports = __webpack_require__(2);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=wp-react-site-preview.js.map
+//# sourceMappingURL=wp-site-preview.js.map

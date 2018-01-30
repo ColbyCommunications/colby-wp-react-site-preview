@@ -10,11 +10,6 @@
   margin-bottom: 1.5rem;
 }
 
-.site-preview a {
-  color: var(--text);
-  text-decoration: none;
-}
-
 .site-preview__main {
   position: relative;
   z-index: 4444;
@@ -107,7 +102,7 @@
   background-color: var(--background-color, #214280);
 }
 
-.site-preview__nav-item {
+.site-preview .site-preview__nav-item {
   position: relative;
   display: flex;
   align-items: center;
@@ -128,7 +123,8 @@
   transition: background-color 0.2s;
 }
 
-.site-preview__nav-item:hover {
+.site-preview .site-preview__nav-item:hover {
+  color: var(--text);
   background-color: #1e3b73;
 }
 
