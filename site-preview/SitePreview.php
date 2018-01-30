@@ -56,14 +56,26 @@ class SitePreview {
 			}
 		);
 
+		add_action( 'after_setup_theme', [ __CLASS__, 'add_thumbnail_size' ] );
 		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'maybe_enqueue_style' ] );
+	}
+
+	/**
+	 * Adds the medium-hero image size used in the size preview.
+	 *
+	 * @return void
+	 */
+	public static function add_thumbnail_size() {
+		if ( ! has_image_size( 'medium-hero' ) ) {
+			add_image_size( 'medium-hero', 1300, 528, true );
+		}
 	}
 
 	/**
 	 * Enqueues plugin scripts and styles if the shortcode is on the page.
 	 */
 	public static function maybe_enqueue_style() {
-		if ( apply_filters( self::ENQUEUE_STYLE_FITLER, true ) !== true ) {
+		if ( apply_filters( self::ENQUEUE_STYLE_FILTER, true ) !== true ) {
 			return;
 		}
 
@@ -74,8 +86,7 @@ class SitePreview {
 			self::TEXT_DOMAIN,
 			"$dist/" . self::TEXT_DOMAIN . "$min.css",
 			[],
-			self::VERSION,
-			true
+			self::VERSION
 		);
 	}
 
