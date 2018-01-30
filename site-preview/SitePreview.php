@@ -63,7 +63,7 @@ class SitePreview {
 	 * Enqueues plugin scripts and styles if the shortcode is on the page.
 	 */
 	public static function maybe_enqueue_style() {
-		if ( apply_filters( self::ENQUEUE_STYLE_FITLER, true ) !== true ) {
+		if ( apply_filters( self::ENQUEUE_STYLE_FILTER, true ) !== true ) {
 			return;
 		}
 
@@ -74,8 +74,7 @@ class SitePreview {
 			self::TEXT_DOMAIN,
 			"$dist/" . self::TEXT_DOMAIN . "$min.css",
 			[],
-			self::VERSION,
-			true
+			self::VERSION
 		);
 	}
 
