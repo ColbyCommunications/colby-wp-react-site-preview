@@ -22,6 +22,6 @@ The shortcode uses (1) the featured image from the site's front page, (2) the th
 
 ### Attribute
 
-#### `site-id` (numeric)
+#### `site-id` (numeric|comma-separated list of numeric strings)
 
-The ID of any site in a WordPress multisite network. Defaults to `1`. In a single-site installation, the shortcode will get data from the single site.
+The ID of any site in a WordPress multisite network. Defaults to `1`. In a single-site installation, the shortcode will get data from the single site. Accepts a comma-separated list of site IDs to display more than one site preview.
