@@ -62,8 +62,16 @@ class Shortcode {
 	public static function render_shortcode( array $atts = [] ) : string {
 		$site_id = $atts['site-id'] ?? '1';
 
-		return self::render(
-			self::assemble_site_preview_data( $site_id )
+		return implode(
+			'',
+			array_map(
+				function( $site_id ) {
+					return self::render(
+						self::assemble_site_preview_data( trim( $site_id ) )
+					);
+				},
+				explode( ',', $site_id )
+			)
 		);
 	}
 
