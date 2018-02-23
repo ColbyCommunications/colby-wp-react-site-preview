@@ -34,14 +34,14 @@ class Shortcode {
 		$page_on_front = get_option( 'page_on_front' );
 
 		if ( ! $page_on_front ) {
+			if ( function_exists( 'restore_current_blog' ) ) {
+				restore_current_blog();
+			}
+
 			return [];
 		}
 
-		if ( function_exists( 'restore_current_blog' ) ) {
-			restore_current_blog();
-		}
-
-		return [
+		$data = [
 			'site_name'      => get_bloginfo( 'name' ),
 			'site_url'       => get_bloginfo( 'url' ),
 			'featured_image' => wp_get_attachment_image_src(
@@ -51,6 +51,12 @@ class Shortcode {
 			'site_menu'      => wp_get_nav_menu_items( 'Site Menu' ),
 			'description'    => get_bloginfo( 'description' ),
 		];
+
+		if ( function_exists( 'restore_current_blog' ) ) {
+			restore_current_blog();
+		}
+
+		return $data;
 	}
 
 	/**
