@@ -84,7 +84,7 @@ class SitePreview {
 
 		wp_enqueue_style(
 			self::TEXT_DOMAIN,
-			"$dist/" . self::TEXT_DOMAIN . "$min.css",
+			$dist . self::TEXT_DOMAIN . "$min.css",
 			[],
 			self::VERSION
 		);
@@ -113,6 +113,6 @@ class SitePreview {
 			return plugin_dir_url( dirname( __DIR__ ) . '/index.php' ) . 'dist';
 		}
 
-		return get_template_directory_uri() . '/vendor/colbycomms/' . self::TEXT_DOMAIN . '/dist/';
+		return get_stylesheet_directory_uri() . '/vendor/colbycomms/' . self::TEXT_DOMAIN . '/dist/';
 	}
 }
