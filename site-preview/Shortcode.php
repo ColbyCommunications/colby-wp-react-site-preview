@@ -48,7 +48,12 @@ class Shortcode {
 				get_post_thumbnail_id( $page_on_front ),
 				'medium-hero'
 			),
-			'site_menu'      => wp_get_nav_menu_items( 'Site Menu' ),
+			'site_menu'      => array_filter(
+				wp_get_nav_menu_items( 'Site Menu' ) ?: [],
+				function( $item ) {
+					return in_array( $item->menu_item_parent, [0, '0'], true );
+				}
+			),
 			'description'    => get_bloginfo( 'description' ),
 		];
 
